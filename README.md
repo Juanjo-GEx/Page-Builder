@@ -1,8 +1,6 @@
 # Page Builder ![Directus](https://img.shields.io/badge/directus-%2364f.svg?style=for-the-badge&logo=directus&logoColor=white) ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 
-La falta de plantillas, themes y funcionalidad en cuanto a la presentación del contenido de **Directus**, significa que hay que buscar tecnologías adicionales para servir como “cabeza” de este CMS. La integración de estas tecnologías que garanticen un óptimo resultado no es una tarea sencilla.
-
-El objetivo de este desarrollo es proponer una solución alternativa que sea fácil de implementar y no rompa los principios de **Directus**.
+Aunque **Directus** no fue pensado para que la persona encargada de gestionar el contenido realizase personalizaciones del mismo, ni para que pudiese decidir sobre la maquetación de la aplicación, esporádicamente puede ser necesario que este perfil pueda crear ciertas partes del sitio sin necesidad de recurrir al desarrollador frontend. El objetivo de este desarrollo es proponer una solución que sea fácil de implementar y no rompa los principios de **Directus**.
 
 Esta solución consiste en extender su funcionalidad, en cuanto a la gestión del contenido, para que la persona encargada de realizar esta tarea pueda tener un impacto directo en la capa de presentación de la aplicación. De esta manera no solo podrá decidir qué información se visualizará en la aplicación, sino que además también podrá decidir dónde se visualizará.
 
