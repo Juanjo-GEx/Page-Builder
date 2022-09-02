@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { NavLink } from "react-router-dom"
 import fetchData from '../services/fetchData'
-import { GetMenuQuery } from '../graphql/HomeQueries'
+import { GetMenuQuery } from '../graphql/queries'
 import { v4 as uuidv4} from 'uuid';
 
 const Navbar = () => {

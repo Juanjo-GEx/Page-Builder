@@ -1,22 +1,22 @@
 import { useParams } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import fetchData from '../services/fetchData'
-import { GetContentFilterPageQuery } from '../graphql/HomeQueries'
+import { GetContentFilterPageQuery } from '../graphql/queries'
 import Section from '../components/Section'
-import { mountTemplate, createEnumTemplate } from '../utils/handleTemplates'
+import { mountTemplate } from '../utils/handleTemplates'
+import { Template } from '../models/template.class'
 
 const DinamicPage = () => {
     
-    const TEMPLATES = createEnumTemplate();
-    const { url } = useParams();
-    
+    const { url } = useParams();    
     const { data: pages, isSuccess, isLoading, isError, error } = useQuery(["pages"], async () => await fetchData(GetContentFilterPageQuery, 'pages', {url: url}));
-    
-    const handleTemplate = (page) => {
         
-        return mountTemplate(page.template_builder.value, 
-                        TEMPLATES, 
-                        page.custom_css)
+    const handleTemplate = (page) => {
+        const newTemplate = new Template(page.template_builder.key,
+                                        page.template_builder.value,
+                                        page.custom_css);
+        
+        return mountTemplate(newTemplate);
     }
 
     if (isLoading) return 'Cargando…'
