@@ -2,6 +2,7 @@ const graphQLAPI = import.meta.env.VITE_NEXT_PUBLIC_GRAPHQL;
 
 const fetchData = async ( query, dataName, variables = {} ) => {
           
+    
     const headers = { 'Content-Type': 'application/json' }
 
     const res = await fetch(graphQLAPI, {
@@ -19,7 +20,7 @@ const fetchData = async ( query, dataName, variables = {} ) => {
         throw new Error(json.errors);
     }
     
-    return json.data[dataName][0];
+    return json.data[dataName];
 }
 
 export default fetchData;

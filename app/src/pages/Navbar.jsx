@@ -18,7 +18,7 @@ const Navbar = () => {
     
     return (
         <nav className="flex gap-6">
-            { isSuccess && menus.menu_items.map(link => 
+            { isSuccess && menus[0].menu_items.map(link => 
                 <NavLink 
                     key={uuidv4()}
                     style={navBarStyles}
