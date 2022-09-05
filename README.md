@@ -4,6 +4,18 @@ Aunque **Directus** no fue pensado para que la persona encargada de gestionar el
 
 Esta solución consiste en extender su funcionalidad, en cuanto a la gestión del contenido, para que la persona encargada de realizar esta tarea pueda tener un impacto directo en la capa de presentación de la aplicación. De esta manera no solo podrá decidir qué información se visualizará en la aplicación, sino que además también podrá decidir dónde se visualizará.
 
+## Requisitos
+
+- Se usará **Directus** como gestor de contenidos para almacenar los datos. 
+- Se usará **GraphQL** como sistema de conexión.
+- Se urará **React** como framework de frontend para la creación de la interfaz de la aplicación.
+- El gestor de base de datos creará el modelo de datos y dará los permisos oportunos para que la persona encargada de administrar la información pueda gestionarla de una manera eficiente.
+- Los permisos en este sentido serán:
+    - Tendrá todos los permisos para la creación de nuevas páginas, secciones, contenidos y menús.
+    - Únicamente tendrá permisos de lectura para la visualización de las plantillas disponibles.
+- Se limitará la estilización de contenidos desde Directus.
+- Tanto los menús como las páginas se crearán dinámicamente desde Directus.
+
 ## Primeros pasos
 
 ### Instalación de Directus
@@ -38,6 +50,7 @@ Durante el proceso de instalación seleccionar **React** como framework del proy
 Lanzar la aplicación:
 
 ```console
+npm create vite@latest <nombre del directorio de la app>
 cd <ruta del directorio de la app>
 npm install
 npm run dev
@@ -63,7 +76,7 @@ npm install directus-extension-editorjs
 Instalar react query como manejador de estados en el servidor y optimizador del rendimiento de las solicitudes a la API:
 
 ```console
-cd <ruta del directorio de la aplicación>
+cd <ruta del directorio de la app>
 npm install @tanstack/react-query
 ```
 
@@ -72,7 +85,7 @@ npm install @tanstack/react-query
 Instalar react router para gestionar las rutas de nuestra aplicación:
 
 ```console
-cd <ruta del directorio de la aplicación>
+cd <ruta del directorio de la app>
 npm install react-router-dom
 ```
 
@@ -81,7 +94,15 @@ npm install react-router-dom
 Instalar Tailwind como framework CSS para estilizar prototipos y casos de testing al permitir un desarrollo ágil y optimizado:
 
 ```console
-cd <ruta del directorio de la aplicación>
+cd <ruta del directorio de la app>
 npm install -D tailwindcss postcss autoprefixer
 npx tailwindcss init -p
 ```
+
+## Casos de uso
+
+1. [**CU-01**] El GC tendrá todos los permisos para la administración de las páginas, secciones, contenidos y menús, pero únicamente tendrá permisos de lectura para poder visualizar las plantillas disponibles.
+2. [**CU-02**] El GC administrará los menús de la aplicación de tal manera que una vez creados puedan visualizarse.
+3. [**CU-03**] El GC administrará el contenido, pero no podrá darle estilos.
+4. [**CU-04**] El GC podrá decidir qué contenido se publicará en cada sección.
+5. [**CU-05**] El GC podrá decidir qué secciones se incluirán en cada página y además podrá aplicarle una plantilla para determinar la estructura de cada página.
