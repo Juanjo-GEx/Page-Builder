@@ -106,3 +106,37 @@ npx tailwindcss init -p
 3. [**CU-03**] El GC administrará el contenido, pero no podrá darle estilos.
 4. [**CU-04**] El GC podrá decidir qué contenido se publicará en cada sección.
 5. [**CU-05**] El GC podrá decidir qué secciones se incluirán en cada página y además podrá aplicarle una plantilla para determinar la estructura de cada página.
+
+## Modelo de datos
+
+### [CU-01] - Permisos
+
+El GBD determinará los permisos de las colecciones que acaba de crear. Para que el GC pueda leer, actualizar, crear y borrar cualquier campo de las colecciones: `menus, pages, sections y components`, es necesario que se cambien esos permisos para que sean accesibles por ese rol. Para la colección `templates` únicamente se otorgarán permisos de lectura.
+
+```console
+Settings > Roles & Permissions > Editor
+```
+
+## Contenidos
+
+### [CU-02] - Menús
+
+El GC simplemente tendrá que acceder a la siguiente ruta para poder crearlos:
+
+```console
+Content > Menus> Create item
+```
+
+### [CU-03] - Contenido
+
+**Editorjs** es una biblioteca para editar contenido de código abierto que facilita la edición y la personalización de bloques de contenido. Además, devuelve los datos en formato `JSON` limpio y legible. Los datos limpios son más rápidos de cargar, más fáciles de depurar y mejoran el rendimiento general del proyecto.
+
+Con esta extensión se puede agregar multitud de tipo de contenido como lo podíamos hacer con `WYSIWYG` usando el editor en línea, pero sin la opción de poder estilizarlo. Si queremos añadir más tipo de contenido y hacer uso de un editor avanzado se podría extender igualmente.
+
+### [CU-04] - Secciones
+
+Por cada región de la aplicación el GC tendrá que crear una colección de tipo `section`, y en ella determinar qué contenido irá alojado en cada una de ellas.
+
+### [CU-05] - Páginas
+
+El GC creará las colecciones de tipo page que contendrán las diferentes secciones prefijadas en el prototipo de la aplicación. Este tipo de colección tiene una peculiaridad con respecto al tipo de colección section y es que el GC podrá determinar qué plantilla usar para que su aspecto se ajuste al diseño de la aplicación. Estas plantillas se han implementado previamente en el frontal.
