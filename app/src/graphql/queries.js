@@ -1,4 +1,4 @@
-export const GetContentPageQuery = 
+export const GetContentPagesQuery = 
 `    
     query GetPage {
         pages {

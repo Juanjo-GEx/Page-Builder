@@ -1,15 +1,8 @@
-import { useParams } from 'react-router-dom'
-import { GetContentFilterPageQuery } from '../graphql/queries'
 import Section from '../components/Section'
 import { mountTemplate } from '../utils/handleTemplates'
 import { Template } from '../models/template.class'
-import useFetch from '../hooks/useFetch'
 
-const DinamicPage = () => {
-    
-    const { url } = useParams();    
-    //const { data: pages, isSuccess, isLoading, isError, error } = useQuery(["pages"], async () => await fetchData(GetContentFilterPageQuery, 'pages', {url: url}));   
-    const { collection, isSuccess } = useFetch(url, GetContentFilterPageQuery, 'pages')
+const DinamicPage = ({ collection, isSuccess }) => {
     
     const handleTemplate = (page) => {
         const newTemplate = new Template(page.template_builder.key,

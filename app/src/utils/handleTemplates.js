@@ -1,4 +1,4 @@
-import { TEMPLATES } from '../models/template.enum'
+import { TEMPLATES } from '../models/templates.enum'
 import { formatCSS } from './formatCSS'
 
 export const mountTemplate = (newTemplate) => { 
