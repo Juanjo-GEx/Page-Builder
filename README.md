@@ -139,4 +139,29 @@ Por cada región de la aplicación el GC tendrá que crear una colección de tip
 
 ### [CU-05] - Páginas
 
-El GC creará las colecciones de tipo page que contendrán las diferentes secciones prefijadas en el prototipo de la aplicación. Este tipo de colección tiene una peculiaridad con respecto al tipo de colección section y es que el GC podrá determinar qué plantilla usar para que su aspecto se ajuste al diseño de la aplicación. Estas plantillas se han implementado previamente en el frontal.
+El GC creará las colecciones de tipo page que contendrán las diferentes secciones prefijadas en el prototipo de la aplicación. Este tipo de colección tiene una peculiaridad con respecto al tipo de colección `section` y es que el GC podrá determinar qué plantilla usar para que su aspecto se ajuste al diseño de la aplicación. Estas plantillas se han implementado previamente en el frontal.
+
+```diff
+- ¡PROBLEMA!
+```
+
+Inicialmente la llamada a la API con **React Query** se hace filtrando por la página que quereamos mostrar, pero tenemos problemas cuando queremos hacer un refetch (nueva llamada a la API) al cambiar de ruta, para que nos renderice el componente y nos muestre la nueva información. **React Query** no nos proporciona un método propio para hacer un refetch cuando usamos *rutas dinámicas que renderizan un mismo componente*. 
+
+Para solucionarlo, al realizar la llamada a la API en vez de filtrar por la página que queremos mostrar, en función de la url, tendremos que consumir la API sin hacer el filtrado, para traernos toda la información y luego mediante un manejador de estados hacer nosotros el filtrado.
+
+## BUG
+
+Para mejorar la experiencia de usuario del GC, se ha modificado el modelo de datos. El GBD tendrá que añadir un nuevo campo a la colección templates para que el GC pueda previsualizar la plantilla antes de crearla y así de un vistazo pueda identificarla más rápidamente y evitar confusiones y minimizar los errores.
+
+Con la implementación de este nuevo requisito se ha detectado un bug en **Directus** que ya está reportado y solucionado:
+
+[Bug en Directus](https://github.com/directus/directus/issues/15398)
+
+## Construido con...
+
+* [Directus](https://docs.directus.io/) - Usado como API y gestor de bases de datos
+* [React](https://es.reactjs.org/) - Usado como framework para manajar la capa de presentación
+
+## Documentación
+
+La documentación del proyecto se puede consultar en la carpeta correspondiente.
